@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/logout}">
+  <input type="submit" value="LogOut"/>
+</form>
+<form action="#" th:method="PATCH" th:action="@{/admin/edit}" th:object="${user}">
+
+  <label for="username">Enter name: </label>
+  <input type="text" th:field="*{username}" id="username"/>
+  <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+  <br/>
+
+  <label for="email">Enter email: </label>
+  <input type="text" th:field="*{email}" id="email"/>
+  <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+  <br/>
+
+  <label for="age">Enter age: </label>
+  <input type="number" min="0" max="127" th:field="*{age}" id="age"/>
+  <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></div>
+  <br/>
+
+  <input readonly type="number" th:field="*{id}" id="id" placeholder="id">
+  <br/>
+
+  <label for="password">Enter password</label>
+  <input type="password"  th:field="*{password}" id="password"/>
+  <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password error</div>
+  <br/>
+
+  <label>Roles:
+    <select size="2" multiple name="listRoles" >
+      <option selected="selected" value="1">ROLE_USER</option>
+      <option value="2">ROLE_ADMIN</option>
+    </select>
+  </label>
+  <br/>
+
+  <input type="submit" value="Update"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:object="${user}">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+    </tr>
+    <td th:utext="${user.id}">id</td>
+    <td th:utext="${user.username}">Name</td>
+    <td th:utext="${user.age}">Age</td>
+    <td th:utext="${user.email}">Email</td>
+  </table>
+</div>
+
+<form th:method="post" th:action="@{/logout}">
+  <input type="submit" value="LogOut"/>
+</form>
+</body>
+</html>
